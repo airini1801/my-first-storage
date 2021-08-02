@@ -1,0 +1,105 @@
+html, body {
+    height: 100%;
+}
+
+.green_gradient {
+    background: rgb(15, 52, 48);
+    background: linear-gradient(170deg, rgba(15, 52, 48, 1) 0%, rgba(196, 206, 48, 1) 100%);
+}
+
+header {
+    background: rgb(15, 52, 48);
+    background: linear-gradient(170deg, rgba(15, 52, 48, 1) 0%, rgba(196, 206, 48, 1) 100%);
+    height: 200px;
+}
+
+header h1 {
+    text-align: center;
+    color: #e3eae7;
+    margin-top: 50px;
+    font-size: 70px;
+}
+
+.card_log {
+    width: 600px;
+    background: #ffffff9e;
+    color: #3a3737;
+}
+
+.login_form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.login_form .link {
+    color: #656565;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px;
+}
+.login_form .link:hover.link_group a:hover{
+    color: #608e17;
+}
+.link_group .link{
+    text-decoration: none;
+    color: black;
+    padding: 4px 16px;
+    font-size: 16px;
+    letter-spacing: .2px;
+    line-height: 20px;
+}
+.link_group a:hover{
+    color: #608e17;
+}
+
+.exit_btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.my_btn {
+    background: rgb(15, 52, 48);
+    background: linear-gradient(170deg, rgba(15, 52, 48, 1) 0%, rgba(196, 206, 48, 1) 100%);
+    height: 36px;
+    border: none;
+    color: white;
+}
+.my_btn:hover {
+    background: rgb(11, 33, 29);
+    background: linear-gradient(170deg, rgba(11, 33, 29, 1) 0%, rgb(108, 118, 30) 100%);
+    color: white;
+}
+
+.btn_block {
+    width: 100% !important;
+}
+
+/*.dropdown_menu{*/
+/*    width: 100%;*/
+/*    background: #ffffff9e;*/
+/*}*/
+.content {
+    background: white;
+    margin: 0;
+    text-align: center;
+}
+
+footer {
+    background: rgb(196, 206, 48);
+    background: linear-gradient(170deg, rgba(196, 206, 48, 1) 14%, rgba(15, 52, 48, 0.9570203081232493) 100%);
+    height: 60px;
+}
+
+footer p {
+    margin-top: 20px;
+    margin-right: 10px;
+    color: white;
+    text-align: right;
+}
+.error_message{
+    font-size: 10px;
+    color: red;
+}

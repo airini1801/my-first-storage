@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{~/css/bootstrap/bootstrap.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+</head>
+<body class="green_gradient d-flex align-items-center justify-content-center">
+<div class="content_log">
+    <div class="row ">
+        <div class="col-12">
+            <div class="login_form">
+                <div class="card card_log">
+                    <div class="card-body">
+                        <form class="p-3" th:action="@{~/login}" method="post">
+                            <h5 class="text-center">Заполните поля</h5>
+
+                            <div class="mb-3">
+                                <label class="form-label">Введите логин</label>
+                                <input name="username" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Введите пароль</label>
+                                <input name="password" type="password" class="form-control">
+                            </div>
+                            <button type="submit" class="btn my_btn btn_block">Вход</button>
+                        </form>
+                        <a th:href="@{~/registration}" class="link">Зарегистрироваться</a>
+                        <a href="#" class="link">Забыли пароль</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+</body>
+</html>
