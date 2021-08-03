@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pro.xway.file_storage.dto.RegistrationRequestDto;
 import pro.xway.file_storage.dao.entities.User;
 import pro.xway.file_storage.exception.*;
+import pro.xway.file_storage.services.CategoryService;
 import pro.xway.file_storage.services.UserService;
 
 import java.util.Optional;
@@ -15,9 +16,12 @@ import java.util.Optional;
 public class SignInController implements UrlConstants {
 
     private final UserService userService;
+    private final CategoryService categoryService;
 
-    public SignInController(UserService userService) {
+    public SignInController(UserService userService,
+                            CategoryService categoryService) {
         this.userService = userService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping(LOGIN)
@@ -46,7 +50,7 @@ public class SignInController implements UrlConstants {
     public String registrationData(@ModelAttribute RegistrationRequestDto dto) {
         try {
             User user = userService.createUser(dto);
-            userService.save(user);
+            categoryService.createDefaultCategory(user);
             return REDIRECT + LOGIN;
         } catch (ApplicationException e) {
             return REDIRECT + REGISTRATION + EXCEPTION + e.getException().name();

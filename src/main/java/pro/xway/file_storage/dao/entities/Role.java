@@ -8,7 +8,7 @@ import java.util.Set;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String role;
 
     @ManyToMany(mappedBy = "roles")
@@ -17,7 +17,7 @@ public class Role {
     public Role() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

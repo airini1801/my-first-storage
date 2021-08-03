@@ -32,8 +32,8 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public void save(User user) {
-        userRepository.save(user);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     @Override
@@ -71,7 +71,8 @@ public class UserService implements UserDetailsService {
         user.setRoles(new HashSet<>());
         user.getRoles().add(role);
 
-        return user;
+        User saved = save(user);
+        return saved;
     }
 
     /**

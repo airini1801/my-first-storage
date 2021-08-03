@@ -2,6 +2,7 @@ package pro.xway.file_storage.services;
 
 
 import org.springframework.stereotype.Service;
+import pro.xway.file_storage.dao.entities.User;
 import pro.xway.file_storage.dto.CategoryDto;
 import pro.xway.file_storage.dao.entities.Category;
 import pro.xway.file_storage.dao.repositories.CategoryRepository;
@@ -23,15 +24,14 @@ public class CategoryService {
         this.userService = userService;
     }
 
-    @PostConstruct
-    public void init() {
+    public void createDefaultCategory(User user) {
         long count = categoryRepository.count();
         if (count == 0) {
             List<Category> categoryList = new ArrayList<>();
-            categoryList.add(new Category("Файлы"));
-            categoryList.add(new Category("Фото"));
-            categoryList.add(new Category("Альбомы"));
-            categoryList.add(new Category("Корзина"));
+            categoryList.add(new Category("Файлы", user));
+            categoryList.add(new Category("Фото", user));
+            categoryList.add(new Category("Альбомы", user));
+            categoryList.add(new Category("Корзина", user));
             categoryRepository.saveAll(categoryList);
         }
     }

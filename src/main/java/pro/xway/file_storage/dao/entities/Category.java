@@ -18,8 +18,9 @@ public class Category {
     public Category() {
     }
 
-    public Category(String name) {
+    public Category(String name, User user) {
         this.name = name;
+        this.user = user;
     }
 
     public User getUser() {
@@ -30,7 +31,7 @@ public class Category {
         this.user = user;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
