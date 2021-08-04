@@ -1,5 +1,7 @@
 package pro.xway.file_storage.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +13,14 @@ import pro.xway.file_storage.services.UserService;
 
 import java.util.Optional;
 
+import static pro.xway.file_storage.controllers.Urls.*;
+
 @Controller
 @RequestMapping("/")
-public class SignInController implements UrlConstants {
-
+public class SignInController  {
+    public static final String REGISTRATION_TEMPLATE = "registration";
+    public static final String LOGIN_TEMPLATE = "login";
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final UserService userService;
     private final CategoryService categoryService;
 
@@ -26,12 +32,12 @@ public class SignInController implements UrlConstants {
 
     @GetMapping(LOGIN)
     public String login() {
-        return "login";
+        return LOGIN_TEMPLATE;
     }
 
     @GetMapping(REGISTRATION)
     public String registration() {
-        return "registration";
+        return REGISTRATION_TEMPLATE;
     }
 
 
@@ -43,16 +49,18 @@ public class SignInController implements UrlConstants {
             ExceptionEnum exception = exceptionEnum.get();
             model.addAttribute("error", exception.getMessage());
         }
-        return "registration";
+        return REGISTRATION_TEMPLATE;
     }
 
     @PostMapping(REGISTRATION)
     public String registrationData(@ModelAttribute RegistrationRequestDto dto) {
+        logger.info("Get request registration {}",dto);
         try {
             User user = userService.createUser(dto);
             categoryService.createDefaultCategory(user);
             return REDIRECT + LOGIN;
         } catch (ApplicationException e) {
+            logger.error("Was application exception with message {}", e.getException().getMessage());
             return REDIRECT + REGISTRATION + EXCEPTION + e.getException().name();
         }
     }

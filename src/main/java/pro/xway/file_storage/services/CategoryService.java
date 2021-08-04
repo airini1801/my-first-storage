@@ -1,6 +1,8 @@
 package pro.xway.file_storage.services;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pro.xway.file_storage.dao.entities.User;
 import pro.xway.file_storage.dto.CategoryDto;
@@ -16,6 +18,7 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final CategoryRepository categoryRepository;
     private final UserService userService;
 
@@ -25,6 +28,7 @@ public class CategoryService {
     }
 
     public void createDefaultCategory(User user) {
+        logger.debug("Start create default category for user ID {}",user.getId());
         long count = categoryRepository.count();
         if (count == 0) {
             List<Category> categoryList = new ArrayList<>();
@@ -34,6 +38,7 @@ public class CategoryService {
             categoryList.add(new Category("Корзина", user));
             categoryRepository.saveAll(categoryList);
         }
+        logger.debug("Finished create default category for user ID {}",user.getId());
     }
 
 

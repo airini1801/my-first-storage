@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
-public class MainController implements UrlConstants {
+public class MainController implements Urls {
     private final CategoryService categoryService;
     private final FileWriterService fileWriterService;
 

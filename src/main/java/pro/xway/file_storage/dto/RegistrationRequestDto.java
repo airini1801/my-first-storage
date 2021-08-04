@@ -38,4 +38,12 @@ public class RegistrationRequestDto {
     public void setPasswordTwo(String passwordTwo) {
         this.passwordTwo = passwordTwo;
     }
+
+    @Override
+    public String toString() {
+        return "RegistrationRequestDto{" +
+                "username='" + username + '\'' +
+                ", email='" + email +
+                '}';
+    }
 }

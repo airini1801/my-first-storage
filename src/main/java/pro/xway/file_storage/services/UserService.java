@@ -1,5 +1,7 @@
 package pro.xway.file_storage.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,14 +24,15 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private BCryptPasswordEncoder bCrypt;
+    private final BCryptPasswordEncoder bCrypt;
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCrypt) {
 
         this.userRepository = userRepository;
+        this.bCrypt = bCrypt;
     }
 
     public User save(User user) {
@@ -46,6 +49,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User createUser(RegistrationRequestDto dto) throws ApplicationException {
+        logger.debug("Start create user {} !", dto);
         if (!dto.getPassword().equals(dto.getPasswordTwo())) {
             throw new ApplicationException(ExceptionEnum.PASSWORD_NOT_EQUAL);
     }
@@ -72,6 +76,7 @@ public class UserService implements UserDetailsService {
         user.getRoles().add(role);
 
         User saved = save(user);
+        logger.debug("Created user for dto {} , new user ID {}", dto, saved.getId());
         return saved;
     }
 

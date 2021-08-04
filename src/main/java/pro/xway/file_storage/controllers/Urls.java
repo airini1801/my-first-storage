@@ -1,6 +1,6 @@
 package pro.xway.file_storage.controllers;
 
-public interface UrlConstants {
+public interface Urls {
     String REDIRECT = "redirect:";
     String EXCEPTION = "/exception/";
     String REGISTRATION = "/registration";

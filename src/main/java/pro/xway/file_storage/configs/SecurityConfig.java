@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import pro.xway.file_storage.controllers.Urls;
 import pro.xway.file_storage.services.UserService;
 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -23,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         config
                 .authorizeRequests()
                 .antMatchers( "/css/**", "/js/**").permitAll()
+                .antMatchers(Urls.REGISTRATION + "/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
 
